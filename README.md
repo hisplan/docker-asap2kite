@@ -4,6 +4,8 @@ A script to reformat FASTQ files from ASAP-seq for downstream processing.
 
 Note that it was originally designed for kite (kallisto | bustools), but can be used for something else as well.
 
+## How to Run
+
 ```
 docker run -it --rm \
     -v $(pwd)/test:/data \
@@ -13,6 +15,20 @@ docker run -it --rm \
     --sample test1 \
     --id asapseq-test \
     --cores 2
+```
+
+## Build Container Image
+
+```bash
+./build.sh
+```
+
+## Push to Docker Registry
+
+Either you can use the `docker push` command or run `push.sh` (requires [SCING](https://github.com/hisplan/scing)):
+
+```bash
+./push.sh
 ```
 
 ## Structure
@@ -33,6 +49,6 @@ After reformatted:
 
 Conversion code: https://github.com/hisplan/asap_to_kite/blob/master/asap_to_kite_v2.py#L122
 
-## NOTE
+### Notes
 
 - `R2` from sequencing must have exactly 16 nts. It appears that >16 could cause issues during the reformatting.
